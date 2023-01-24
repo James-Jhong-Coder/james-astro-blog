@@ -1,0 +1,31 @@
+<header class="header">
+    <ul class="list">
+        <li class="list-item">James blog</li>
+        <li class="list-item">自我介紹</li>
+        <li class="list-item">文章</li>
+    </ul>
+</header>
+
+<style lang="scss">
+    .header {
+        @apply tw-py-4;
+        @apply tw-text-lg;
+        color: #E2E2E2;
+        padding: 16px 100px;
+        background: #121212;
+    }
+
+    .list {
+        @apply tw-flex;
+        .list-item {
+            @apply tw-mr-6;
+            @apply tw-cursor-pointer;
+            &:hover {
+                @apply tw-underline;
+            }
+        }
+        .list-item:last-child {
+            @apply tw-mr-0;
+        }
+    }
+</style>
