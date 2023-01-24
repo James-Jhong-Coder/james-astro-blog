@@ -1,0 +1,13 @@
+html {
+    @apply tw-w-full;
+    @apply tw-h-full;
+    font-size: 16px;
+}
+
+body {
+    @apply tw-h-full;
+    background: #1E1E1E;
+    @apply tw-grid;
+    grid-template-columns: minmax(min-content, 1fr);
+    grid-template-rows: min-content minmax(min-content, 1fr) min-content;
+}
