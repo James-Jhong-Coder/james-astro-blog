@@ -1,31 +1,66 @@
 <header class="header">
-    <ul class="list">
-        <li class="list-item">James blog</li>
-        <li class="list-item">自我介紹</li>
-        <li class="list-item">文章</li>
+    <div class="logo">James blog</div>
+    <ul class="menu">
+        <li class="menu-item">自我介紹</li>
+        <li class="menu-item">文章</li>
+        <li class="menu-item">
+            <img id="icon-mode" class="icon-mode" alt="icon-mode">
+        </li>
     </ul>
 </header>
 
-<style lang="scss">
-    .header {
-        @apply tw-py-4;
-        @apply tw-text-lg;
-        color: #E2E2E2;
-        padding: 16px 100px;
-        background: #121212;
+<script>
+    import IconlightMode from '@images/light.svg'
+    import IconDarkMode from '@images/dark.svg'
+
+    let mode = 'dark'
+    const iconMode = document.querySelector('#icon-mode') as HTMLImageElement;
+    if (iconMode) {
+        iconMode.src = IconlightMode
+        iconMode.addEventListener('click', toggleMode)
     }
 
-    .list {
+    function toggleMode() {
+        if (!iconMode) return
+        if (mode === 'dark') {
+            mode = 'light'
+            iconMode.src = IconDarkMode
+        } else {
+            mode = 'dark'
+            iconMode.src = IconlightMode
+        }
+        document.documentElement.setAttribute('data-theme', mode);
+    }
+</script>
+
+<style lang="scss">
+    .header {
+        @apply tw-py-4 tw-text-lg;
         @apply tw-flex;
-        .list-item {
+        padding: 16px 100px;
+        color: var(--text-color);
+        background: var(--primary-color);
+    }
+
+    .logo {
+        @apply tw-mr-6;
+    }
+    .menu {
+        @apply tw-flex tw-items-center;
+        .menu-item {
             @apply tw-mr-6;
             @apply tw-cursor-pointer;
             &:hover {
                 @apply tw-underline;
             }
+            &:last-child {
+                @apply tw-mr-0;
+            }
         }
-        .list-item:last-child {
-            @apply tw-mr-0;
-        }
+    }
+
+    .icon-mode {
+        @apply tw-w-5;
+        @apply tw-h-5;
     }
 </style>
