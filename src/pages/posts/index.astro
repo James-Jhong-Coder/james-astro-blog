@@ -1,0 +1,8 @@
+---
+import Layout from '@layouts/Layout.astro'
+const posts = await Astro.glob('./*.md');
+// console.log('posts = ', posts)
+---
+<Layout>
+    {posts.map(post => <span>{post.rawContent()}</span>)}
+</Layout>
