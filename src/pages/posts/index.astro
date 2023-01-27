@@ -1,8 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Breadcrumbs from '@components/Breadcrumbs.astro';
 const posts = await Astro.glob('./*.md');
-// console.log('posts = ', posts)
 ---
 <Layout>
-    {posts.map(post => <span>{post.rawContent()}</span>)}
+    <Breadcrumbs />
+    <div class="tw-container">
+        {posts.map(post => <span>{post.rawContent()}</span>)}
+    </div>
 </Layout>
