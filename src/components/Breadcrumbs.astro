@@ -1,0 +1,47 @@
+---
+let homePath = [
+    {
+        text: '首頁',
+        href: '/'
+    }
+]
+
+const fullPath = Astro.url.pathname.split('/')
+                    .filter(path => path)
+                    .reduce((result, item, index, array) => {
+                        const href = `/${array.slice(0, index + 1).join('/')}`
+                        return [
+                            ...result,
+                            {
+                                text: item,
+                                href
+                            }
+                        ]
+                    }, homePath)
+
+---
+<div class="tw-container">
+    <div class="breadcrumbs">
+        {fullPath.map(path => (
+                <div class="breadcrumbs__breadcurmb">
+                    <a href={path.href}>{path.text}</a>    
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style lang="scss">
+.breadcrumbs {
+    @apply tw-flex tw-items-center;
+    @apply tw-text-xl;
+    .breadcrumbs__breadcurmb {
+        &:not(:last-child) {
+            &::after {
+                content: '/';
+                @apply tw-mx-2;
+            }
+        }
+    }
+}
+</style>
